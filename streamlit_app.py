@@ -1,5 +1,5 @@
 import streamlit
-
+import requests
 streamlit.title('My Mom New Healthy Dinner')
 
 streamlit.header('Breakfast Menu')
@@ -20,3 +20,5 @@ fruit_to_show= my_fruit_list.loc[selected_fruits]
 
 streamlit.dataframe(fruit_to_show)
 
+fruitvice_response=request.get('https://fruityvice.com/api/fruit/watermelon')
+streamlit.text(fruitvice_response)
