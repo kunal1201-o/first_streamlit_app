@@ -36,5 +36,4 @@ streamlit.dataframe(fruitvice_data_normalize)
 fruit_choice= streamlit.text_input('what fruit do like information about?','kiwi')
 streamlit.write('User Entered',fruit_choice)
 
-import snowflake as sf
-from snowflake import connector
+import snowflake.connector
