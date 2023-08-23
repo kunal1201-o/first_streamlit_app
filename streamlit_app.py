@@ -1,6 +1,6 @@
 import streamlit
 import requests
-import snowflake
+
 streamlit.title('My Mom New Healthy Dinner')
 
 streamlit.header('Breakfast Menu')
@@ -35,3 +35,4 @@ streamlit.dataframe(fruitvice_data_normalize)
 
 fruit_choice= streamlit.text_input('what fruit do like information about?','kiwi')
 streamlit.write('User Entered',fruit_choice)
+import snowflake
