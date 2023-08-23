@@ -1,2 +1,3 @@
 # requirements.txt
+connector version 2.7.9
 snowflake-connector-python
