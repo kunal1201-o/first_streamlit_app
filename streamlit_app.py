@@ -23,19 +23,22 @@ fruit_to_show= my_fruit_list.loc[selected_fruits]
 streamlit.dataframe(fruit_to_show)
 streamlit.header('Fruityvice Fruit Advice!')
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-streamlit.text(fruityvice_response.json())
 
-
-
-fruitvice_data_normalize = pandas.json_normalize(fruityvice_response.json())
 
 
 
 streamlit.dataframe(fruitvice_data_normalize)
-
-fruit_choice= streamlit.text_input('what fruit do like information about?','kiwi')
-streamlit.write('User Entered',fruit_choice)
+try:
+  fruit_choice= streamlit.text_input('what fruit do like information about?','kiwi')
+  if not fruit_choice:
+    streamlit.error('please select fruit to get infromation')
+  else:
+    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+    fruitvice_data_normalize = pandas.json_normalize(fruityvice_response.json())
+    streamlit.dataframe(fruitvice_data_normalize)
+except URLError as e:
+  streamlit.error()
+# streamlit.write('User Entered',fruit_choice)
 streamlit.stop()
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
